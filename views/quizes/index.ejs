@@ -1,6 +1,6 @@
 <p>
     <% quizes.forEach(function(quiz){ %>
-    <a href="/quizes/<%= quiz.id %>"><%= quiz.pregunta %></a><br>
+    <a href="/quizes/<%= quiz.id %>"><%= quiz.pregunta %></a><a href="/quizes/<%= quiz.id %>/edit"><button>Editar</button></a><br>
     <% })%>
 </p>
 <br>
