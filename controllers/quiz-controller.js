@@ -6,7 +6,7 @@ var models = require('../models/models.js');
 // Autoload :id. Se dispara automaticamente cuando viene un path con un id (recupera de base de datos el objeto)
 // así me evito tener que hacer la misma llamada desde le show y desde el answer
 exports.load = function(req, res, next, quizId) {
-    models.Quiz.find(quizId).then(function(quiz) {
+    models.Quiz.find({where: {id: Number(quizId)},include:[{model: models.Comment}]}).then(function(quiz) {
             if (quiz) {
                 req.quiz = quiz;
                 next();
