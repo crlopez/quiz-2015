@@ -13,6 +13,9 @@ router.get('/author', function(req, res) {
   res.render('author', { autor: 'Cristina Lopez });
 });
 
+// Autoload de comandos con :quizId
+// Si el parametro quizId está en la ruta ejecuta el quizController.load
+router.param('quizId',quizController.load);
 
 router.get('/quizes', quizController.index);
 router.get('/quizes/:quizId(\\d+)', quizController.show);
