@@ -32,7 +32,7 @@ exports.show = function(req, res) {
 // GET /quizes/:id/answer
 exports.answer = function(req, res) {
     var resultado = 'Incorrecto';
-    if (req.query.respuesta === req.quiz.respuesta) {
+    if (req.query.respuesta.toLowerCase() === req.quiz.respuesta.toLowerCase()) {
         resultado = 'Correcto';
     }
     res.render(
@@ -41,4 +41,16 @@ exports.answer = function(req, res) {
             respuesta: resultado
         }
     )};
+
+// GET /quizes/search
+exports.search = function(req, res) {
+    var cadenaABuscar = '%'+req.param("search").trim()+'%';
+    cadenaABuscar = cadenaABuscar.replace(" ","%");
+    models.Quiz.findAll({where: ["pregunta like ?", cadenaABuscar], order: ["pregunta"]}).then(
+        function(quizes) {
+            res.render('quizes/search', {quizes: quizes});
+        }
+    ).catch(function(error){next(error);})
+};
+
 

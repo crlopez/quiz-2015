@@ -10,7 +10,7 @@ router.get('/', function(req, res) {
 
 /* GET home page. */
 router.get('/author', function(req, res) {
-  res.render('author', { autor: 'Cristina Lopez });
+  res.render('author', { autor: 'Cristina Lopez' });
 });
 
 // Autoload de comandos con :quizId
@@ -20,6 +20,8 @@ router.param('quizId',quizController.load);
 router.get('/quizes', quizController.index);
 router.get('/quizes/:quizId(\\d+)', quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
+
+router.get('/quizes/search', quizController.search);
 
 
 module.exports = router;

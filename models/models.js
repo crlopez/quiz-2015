@@ -49,6 +49,7 @@ sequelize.sync().then(function () {
             Quiz.bulkCreate(
                 [{pregunta: '¿Cuál es la capital de Italia?', respuesta: 'Roma'},
                     {pregunta: '¿Cuál es la capital de Portugal?', respuesta: 'Lisboa'},
+                    {pregunta: '¿Cuál es la capital de Grecia?', respuesta: 'Atenas'},
                     {pregunta: '¿Quién descubrió América?', respuesta: 'Cristóbal Colón'}
                 ]).then(function () {
                     console.log('Base de datos (tabla quiz) inicializada')

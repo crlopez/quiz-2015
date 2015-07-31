@@ -3,3 +3,11 @@
     <a href="/quizes/<%= quiz.id %>"><%= quiz.pregunta %></a><br>
     <% })%>
 </p>
+<br><br>
+<p>
+<form method="get" action="/quizes/search">
+    <p>Buscador de preguntas</p>
+    <input type="text" name="search" id="search">
+    <input type="submit" value="buscar">
+</form>
+</p>
