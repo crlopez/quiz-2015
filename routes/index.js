@@ -20,6 +20,10 @@ router.get('/author', function(req, res) {
 // Si el parametro quizId está en la ruta ejecuta el quizController.load
 router.param('quizId',quizController.load);
 
+// autoload :commentId
+router.param('commentId', commentController.load);
+
+
 // Definición de rutas de sesión
 router.get('/login', sessionController.new);
 router.post('/login', sessionController.create);
@@ -41,6 +45,7 @@ router.delete('/quizes/:quizId(\\d+)', sessionController.loginRequired,  quizCon
 // Definición de rutas de comentarios
 router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
 router.post('/quizes/:quizId(\\d+)/comments',    commentController.create);
+router.get('/quizes/:quizId(\\d+)/comments/:commentId(\\d+)/publish', sessionController.loginRequired, commentController.publish); // debería ser put siendo extrictos
 
 
 module.exports = router;
