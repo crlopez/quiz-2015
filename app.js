@@ -28,7 +28,7 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(cookieParser('quiz2015'));
-app.use(session);
+app.use(session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
